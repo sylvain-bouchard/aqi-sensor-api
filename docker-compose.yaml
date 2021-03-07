@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  aqi-sensor-api:
+    image: aqi-sensor-api:latest
+    container_name: aqi-sensor-api
+    restart: always
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    ports:
+      - "3500:3500"

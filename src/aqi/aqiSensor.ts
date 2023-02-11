@@ -1,4 +1,4 @@
-import * as SerialPort from 'serialport';
+import { SerialPort } from 'serialport';
 import * as fs from 'fs';
 import { EventEmitter } from 'events';
 
@@ -35,7 +35,7 @@ export class AqiSensor extends EventEmitter {
       throw new Error('Device not connected!');
     }
 
-    this._serialPort = new SerialPort(path, { baudRate });
+    this._serialPort = new SerialPort({ path, baudRate });
     this._serialPort.on('data', data => {
       this._lastReading = this.processFrame(data);
 
